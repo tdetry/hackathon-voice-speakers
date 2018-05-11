@@ -1,4 +1,4 @@
-# Hackthon voice speaker interface
+# Hackathon voice speaker interface
 Hakathon web-server to enable:
 - Dialogflow and Google Action SDK integration for Google Home 
 - Alexa integration
