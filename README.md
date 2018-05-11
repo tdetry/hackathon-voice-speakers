@@ -14,13 +14,14 @@ Hakathon web-server to enable:
 ### Required for Alexa
 - AWS developer account
 - Web-server as a service (Cloud9, Heroku, App Engine)
-- Alexa Skilss
+- Alexa skill
 
 ## Resource:
-- https://console.actions.google.com/
-- https://developers.google.com/actions/sdk/
-- https://dialogflow.com/docs/getting-started/basics
-
+- <https://console.actions.google.com/>
+- <https://developers.google.com/actions/sdk/>
+- <https://dialogflow.com/docs/getting-started/basics>
+- <https://developer.amazon.com/alexa/>
+- <https://developer.amazon.com/alexa-skills-kit>
 
 
 
