@@ -15,7 +15,7 @@ app.use(morgan('combined'))
 // Parsing incoming request
 app.use(bodyParser.json())
 
-// Test endpoint
+// Test/Health endpoint
 app.get('/', (req, res) => {
   res.json({ response: 'Hello, everythings looks OK!' })
 })
