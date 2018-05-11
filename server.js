@@ -8,6 +8,7 @@ const app = express()
 
 const ghome = require('./api/ghome')
 
+const alexa = require('./api/alexa')
 
 // Basic loggin
 app.use(morgan('combined'))
@@ -22,6 +23,9 @@ app.get('/', (req, res) => {
 
 // Google Action SDK webhook 
 app.use('/ghome', ghome)
+
+// Alexa webhook 
+app.use('/alexa', alexa)
 
 // Basic 404 handler
 app.use((req, res) => {
