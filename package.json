@@ -1,7 +1,7 @@
 {
   "name": "hackathon-google-home",
   "version": "1.0.0",
-  "description": "Web-server for easy Dialogflow/Google Home integration",
+  "description": "Web-server for easy Dialogflow/Google Home integration & Alexa",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
