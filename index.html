@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Hackathon</title>
+
+  </head>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+      $(function () {
+        var socket = io();
+        $('form').submit(function(){
+          socket.emit('chat message', $('#m').val());
+          $('#m').val('');
+          return false;
+        });
+        socket.on('chat message', function(msg){
+            console.log(msg)
+          $('#messages').append($('<li>').text(msg));
+          window.scrollTo(0, document.body.scrollHeight);
+        });
+        socket.on('notification', function(notif){
+            console.log(notif)
+          // $('#messages').append($('<li>').text(msg));
+          // window.scrollTo(0, document.body.scrollHeight);
+          $("#myModal").modal()
+        });
+      });
+  </script>
+  <body>
+    
+    <!-- <ul id="messages"></ul>
+    <form action="">
+      <input id="m" autocomplete="off" /><button>Send</button>
+    </form> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">You have a notification</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some cool hardcoded stuff here.</p>
+          <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_photos/000/400/990/datas/full_width.png"/>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>    
+    
+  </body>
+</html>
