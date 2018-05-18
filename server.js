@@ -16,8 +16,7 @@ const ghome = require('./api/ghome')
 
 const alexa = require('./api/alexa')
 
-const ejs = require('ejs')
-
+console.log(process.env.AWS_SECRET_ACCESS_KEY)
 // Basic loggin
 app.use(morgan('combined'))
 
@@ -25,21 +24,11 @@ app.use(morgan('combined'))
 app.use(bodyParser.json())
 
 
-app.set('views', path.join(__dirname, '', 'frontend/dist'))
-  .set('view engine', 'ejs')
-  .engine('html', require('ejs').renderFile)
-
-app.use(express.static(path.join(__dirname, '', 'frontend/dist')))
-
-app.get('/', function (req, res) {
-  res.render('index')
-})
-
-/* Serving static files
+// Serving static files
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 });
-*/
+
 
 // Test/Health endpoint
 app.get('/healthz', (req, res) => {

@@ -11,52 +11,104 @@
   <script>
       $(function () {
         var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', $('#m').val());
-          $('#m').val('');
-          return false;
+        socket.on('location', function(notif){
+          console.log(notif)
+          $("#location").modal()
         });
-        socket.on('chat message', function(msg){
-            console.log(msg)
-          $('#messages').append($('<li>').text(msg));
-          window.scrollTo(0, document.body.scrollHeight);
+        socket.on('bestsellers', function(notif){
+          console.log(notif)
+          $('#location').modal('hide')
+          $("#bestsellers").modal()
         });
-        socket.on('notification', function(notif){
-            console.log(notif)
-          // $('#messages').append($('<li>').text(msg));
-          // window.scrollTo(0, document.body.scrollHeight);
-          $("#myModal").modal()
+        socket.on('cluster', function(notif){
+          console.log(notif)
+          $('#location').modal('hide')
+          $('#bestsellers').modal('hide')
+          $("#cluster").find('.modal-body').text(notif)
+          $("#cluster").modal();
+        });
+        socket.on('joke', function(notif){
+          console.log(notif)
+          $('#location').modal('hide')
+          $('#bestsellers').modal('hide')
+          $("#cluster").modal('hide')
+          $("#joke").modal();
         });
       });
   </script>
-  <body>
-    
-    <!-- <ul id="messages"></ul>
-    <form action="">
-      <input id="m" autocomplete="off" /><button>Send</button>
-    </form> -->
+  <body background="https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940">
 
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <!-- Modal location -->
+  <div class="modal fade" id="location" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-body">
+          <p>Here are the closest shops:</p>
+          <img src="http://www.hotelroomsearch.net/im/hotels/fr/aarons-1.jpg" width="50%"/>
+          <br/>>
+          <img src="https://jquery-plugins.net/image/plugin/whatsnearby-list-nearby-places-using-google-maps.jpg" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </div>    
+  
+   <!-- Modal cluster -->
+  <div class="modal fade" id="cluster" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">You have a notification</h4>
+          <h4 class="modal-title">Aaron's</h4>
         </div>
         <div class="modal-body">
-          <p>Some cool hardcoded stuff here.</p>
-          <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_photos/000/400/990/datas/full_width.png"/>
+            <input type="text" name="bookId" id="bookId" value=""/>
+        </div>
+      </div>
+    </div>
+  </div>    
+
+   <!-- Modal joke -->
+  <div class="modal fade" id="joke" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aaron's</h4>
+        </div>
+        <div class="modal-body">
+            <img src="http://i0.kym-cdn.com/entries/icons/original/000/000/091/TrollFace.jpg" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </div>        
+    
+  <!-- Modal bestsellers -->
+  <div class="modal fade" id="bestsellers" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Aaron's</h4>
+        </div>
+        <div class="modal-body">
+          <p>Here are our best deals:</p>
+          <img src="http://www.hotelroomsearch.net/im/hotels/fr/aarons-1.jpg" width="50%"/>
+          <br/>>
+          <img src="http://quezon.files.wordpress.com/2009/05/computer-comparison1.png" width="100%"/>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
     </div>
-  </div>    
-    
+  </div>      
   </body>
 </html>
