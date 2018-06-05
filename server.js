@@ -25,6 +25,8 @@ app.use(bodyParser.json())
 
 
 // Serving static files
+app.use(express.static('img'))
+
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 });
